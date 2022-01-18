@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{% block windowtitle %}{{ SITENAME }}{% endblock %}</title>
-    <meta name="description" content="">
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{{ SITEDESCRIPTION }}{% endblock %}">
     <meta name="author" content="{{ AUTHOR }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -12,12 +12,11 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="{{ SITEURL }}/theme/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ SITEURL }}/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
     <link href="{{ SITEURL }}/theme/local.css" rel="stylesheet">
     <link href="{{ SITEURL }}/theme/pygments.css" rel="stylesheet">
     <link href="{{ SITEURL }}/theme/font-awesome.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -25,7 +24,7 @@
   <div class="container">
     <div class="row-fluid">
       <div class="span9">
-	<a href="{{ SITEURL }}"><h1>{{SITENAME}}</h1></a>
+	<a href="{{ SITEURL }}" class="brand">{{SITENAME}}</a>
       </div>
 
       <div class="span3" id="blog-nav">
@@ -110,7 +109,7 @@
                 <i class="icon-rss" style="color: #1f334b"></i>
                 RSS Feed</a></li>
 	    {% endif %}
-            <li><a href="{{ SITEURL }}/{{ FEED }}" rel="alternate">
+            <li><a href="{{ SITEURL }}/{{ FEED_ATOM }}" rel="alternate">
                 <i class="icon-rss-sign" style="color: #1f334b"></i>
                 Atom Feed</a></li>
 	  </ul>
@@ -122,7 +121,7 @@
     <hr />
     <p align="center"><a href="{{ SITEURL }}">{{ SITENAME }}</a>
       &copy; {{ AUTHOR }}
-    Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
+    Powered by <a href="https://github.com/getpelican/pelican">Pelican</a> and
         <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
         Icons by <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a> and 
         <a href="http://gregoryloucas.github.com/Font-Awesome-More">Font Awesome More</a></p>
@@ -133,6 +132,8 @@
         <li class="weather" id="currentTemperature">Temperature: -°C
         <li class="weather" id="currentWindSpeed">Wind speed: - m/s
         <li class="weather" id="forecastConditions">Forecast conditions: -
+        <li class="weather" id="systemUptime">Uptime: -
+        <li class="weather" id="systemTime">Time: -
     </ul>
     </p>
 
@@ -140,10 +141,10 @@
 </div> <!--end of container -->
 
 <!--/footer-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
 
 
-<script src="./theme/js/jquery-1.8.3.min.js"></script>
-<script src="./theme/js/bootstrap.min.js"></script>
 {% include "analytics.html" %}
 
 </body>
